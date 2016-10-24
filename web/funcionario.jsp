@@ -31,9 +31,11 @@
                             <tr>
                                 <td><div class="col-md-3"></div></td>
                                 <td><input class="form-control" type="text" name="txt_nome" placeholder="Nome"/></td>
-                                <td><input class="form-control" type="text" name="txt_sobrenome" placeholder="Sobrenome"/></td>
-                                <td><input class="form-control" type="text" name="txt_dpto" placeholder="Departamento"/></td>
-                                <td><input class="form-control" type="text" name="txt_salario" placeholder="Salário"/></td>
+                                <td><input class="form-control" type="text" name="txt_social" placeholder="Razão Social"/></td>
+                                <td><input class="form-control" type="text" name="txt_cnpj" placeholder="CNPJ"/></td>
+                                <td><input class="form-control" type="text" name="txt_email" placeholder="Email"/></td>
+                                <td><input class="form-control" type="text" name="txt_telefone" placeholder="Telefone"/></td>
+                                <td><input class="form-control" type="text" name="txt_endereco" placeholder="Endereço"/></td>
                                 <td><button class="btn btn-default" type="submit">Cadastrar</button></td>
                             </tr>
                         </table>
@@ -47,9 +49,12 @@
                     <tr>
                         <th>#ID</th> <!-- é o ID do ArrayList -->
                         <th>NOME</th>
-                        <th>SOBRENOME</th>
-                        <th>DEPARTAMENTO</th>
-                        <th>SALARIO</th>
+                        <th>RAZÃO SOCIAL</th>
+                        <th>CNPJ</th>
+                        <th>EMAIL</th>
+                        <th>TELEFONE</th>
+                        <th>ENDEREÇO</th>
+                        <th></th>
                     </tr>
                     <% for(Funcionario cadastros: func) { %> <!-- FAÇAM DO JEITO QUE CONHECEM -->
                     <tr>

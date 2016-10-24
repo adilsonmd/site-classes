@@ -31,9 +31,11 @@
                             <tr>
                                 <td><div class="col-md-3"></div></td>
                                 <td><input class="form-control" type="text" name="txt_nome" placeholder="Nome"/></td>
-                                <td><input class="form-control" type="text" name="txt_sobrenome" placeholder="Sobrenome"/></td>
-                                <td><input class="form-control" type="text" name="txt_endereco" placeholder="Endereço"/></td>
+                                <td><input class="form-control" type="text" name="txt_cpf" placeholder="CPF"/></td>
+                                <td><input class="form-control" type="text" name="txt_rg" placeholder="RG"/></td>
+                                <td><input class="form-control" type="email" name="txt_email" placeholder="Email"/></td>
                                 <td><input class="form-control" type="text" name="txt_telefone" placeholder="Telefone"/></td>
+                                <td><input class="form-control" type="text" name="txt_endereco" placeholder="Endereço"/></td>
                                 <td><button class="btn btn-default" type="submit">Cadastrar</button></td>
                             </tr>
                         </table>
@@ -48,9 +50,11 @@
                     <tr>
                         <th>#ID</th> <!-- é o ID do ArrayList --> 
                         <th>NOME</th>
-                        <th>SOBRENOME</th>
-                        <th>ENDEREÇO</th>
+                        <th>CPF</th>
+                        <th>RG</th>
+                        <th>EMAIL</th>
                         <th>TELEFONE</th>
+                        <th>ENDEREÇO</th>
                         <th></th>
                     </tr>
                     
@@ -58,10 +62,12 @@
                     <tr>
                         <td>01</td>
                         <td>Adilson</td>
-                        <td>Alves</td>
-                        <td>Rua Fernandinho</td>
+                        <td>111.222.333-44</td>
+                        <td>11.222.333.4</td>
+                        <td>adilson@email.com</td>
                         <td>1334484848</td>
-                        <td></td>
+                        <td>Rua Fernandinho</td>
+                        <td><button class="btn-editar">Editar</button><button class="btn-excluir">>Excluir</button></td>
                     </tr>
                     <% } %>
                 </table>

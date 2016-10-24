@@ -10,40 +10,6 @@ body {
 	font-family: 'Noto', sans-serif;
 	height: 100%;
 }
-nav {
-	border-right: rgba(0,0,0,0.24);
-}
-.nav>li>a{
-	color: #009688;
-}
-.nav>li>a:focus, .nav>li>a:hover {
-	color: #004D40;
-	background-color: #ECEFF1;
-}
-
-.jumbo-title {
-	background-color: transparent;
-	background-image: url("../img/bi-software.jpg");
-	margin-top: 10px;
-	margin: 10px auto;
-}
-.jumbo-bg {
-	height: inherit;
-	width: inherit;
-	background-color: rgba(255,255,255,0.7);	
-}
-.jumbo-title {
-	width: 100%;
-}
-.jumbo-title p {
-	font-size: 18px;
-	font-weight: 600;
-}
-.jumbo-title .jumbo-p {
-	font-size: 42px;
-	font-weight: 600;
-}
-
 
 /* ============= TELAS DE CADASTRO ============== */
 .row, .full-content, .sidebar-container {
