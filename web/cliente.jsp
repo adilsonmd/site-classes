@@ -55,10 +55,10 @@
                         <th>EMAIL</th>
                         <th>TELEFONE</th>
                         <th>ENDEREÇO</th>
-                        <th></th>
+                        <th colspan="2">Ações</th>
                     </tr>
                     
-                    <% for(Cliente cadastro: client) { %> <!-- FAÇAM DO JEITO QUE CONHECEM -->
+                    <% //for () { %>
                     <tr>
                         <td>01</td>
                         <td>Adilson</td>
@@ -67,9 +67,10 @@
                         <td>adilson@email.com</td>
                         <td>1334484848</td>
                         <td>Rua Fernandinho</td>
-                        <td><button class="btn-editar">Editar</button><button class="btn-excluir">>Excluir</button></td>
+                        <td><a href="?ed=1&id=<%= //arrayList id %>" class="btn btn-success">Editar</a></td>
+                        <td><a href="?ex=1&id=<%= //arraylist id%>" class="btn btn-danger">Excluir</a></td>
                     </tr>
-                    <% } %>
+                    <% // } %>
                 </table>
             </div> <!-- DIV COL 9 -->
         </div> <!-- DIV ROW -->

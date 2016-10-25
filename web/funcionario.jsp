@@ -54,18 +54,20 @@
                         <th>EMAIL</th>
                         <th>TELEFONE</th>
                         <th>ENDEREÇO</th>
-                        <th></th>
+                        <th colspan="2"></th>
                     </tr>
-                    <% for(Funcionario cadastros: func) { %> <!-- FAÇAM DO JEITO QUE CONHECEM -->
+                    
+                    <% //for() { %> <!-- FAÇAM DO JEITO QUE CONHECEM -->
                     <tr>
                         <td>01</td>
                         <td>Arthur</td>
                         <td>Blanco</td>
                         <td>Rua Will Smith</td>
                         <td>1.420,60</td>
-                        <td></td>
+                        <td><a href="?ed=1&id=<%= //arrayList id %>" class="btn btn-success">Editar</a></td>
+                        <td><a href="?ex=1&id=<%= //arraylist id%>" class="btn btn-danger">Excluir</a></td>
                     </tr>
-                    <% } %>
+                    <% //} %>
                 </table>
                 
             </div> <!-- DIV COL 9 -->
