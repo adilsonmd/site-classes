@@ -17,7 +17,7 @@
         <div class="row">
             <div id="sidebar-container" class="col-md-2 sidebar-container">
                 <ul class="sidebar-brand">
-                    <li><a href="index.jsp">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                 </ul>
                 <ul class="sidebar-list">
                     <li class="sidebar-item"><a href="cliente.jsp">Clientes</a></li>
