@@ -7,33 +7,33 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="exampleModalLabel">Editar cadastro</h4>
+        <h4 class="modal-title" id="exampleModalLabel<%= id %>">Editar cadastro</h4>
       </div>
       <div class="modal-body">
         <form>
           <div class="form-group">
             <label for="ed-nome" class="form-control-label">Nome:</label>
-            <input type="text" class="form-control" id="ed-nome" name="txt_novo_nome" value="<%= cl.getNome() %>">
+            <input type="text" class="form-control" id="ed-nome" name="txt_novo_nome" value="<%= fr.getNome() %>">
           </div>
           <div class="form-group">
             <label for="ed-rg" class="form-control-label">RG:</label>
-            <input type="text" class="form-control" id="ed-rg" name="txt_novo_rg" value="<%= cl.getRg() %>">
+            <input type="text" class="form-control" id="ed-rg" name="txt_novo_social" value="<%= fr.getRazaoSocial() %>">
           </div>
           <div class="form-group">
             <label for="ed-cpf" class="form-control-label">CPF:</label>
-            <input type="text" class="form-control" id="ed-cpf" name="txt_novo_cpf" value="<%= cl.getCpf() %>">
+            <input type="text" class="form-control" id="ed-cpf" name="txt_novo_cnpj" value="<%= fr.getCnpj() %>">
           </div>
           <div class="form-group">
             <label for="ed-email" class="form-control-label">Email:</label>
-            <input type="text" class="form-control" id="ed-email" name="txt_novo_email" value="<%= cl.getEmail() %>">
+            <input type="text" class="form-control" id="ed-email" name="txt_novo_email" value="<%= fr.getEmail() %>">
           </div>
           <div class="form-group">
             <label for="ed-tel" class="form-control-label">Telefone:</label>
-            <input type="text" class="form-control" id="ed-tel" name="txt_novo_tel" value="<%= cl.getTelefone() %>">
+            <input type="text" class="form-control" id="ed-tel" name="txt_novo_tel" value="<%= fr.getTelefone() %>">
           </div>
           <div class="form-group">
             <label for="ed-endereco" class="form-control-label">Endereço:</label>
-            <input type="text" class="form-control" id="ed-endereco" name="txt_novo_endereco" value="<%= cl.getEndereço() %>">
+            <input type="text" class="form-control" id="ed-endereco" name="txt_novo_endereco" value="<%= fr.getEndereço() %>">
           </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
