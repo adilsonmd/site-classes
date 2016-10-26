@@ -22,7 +22,7 @@
             forn.setRazaoSocial(request.getParameter("txt_social"));
             forn.setCnpj (request.getParameter("txt_cnpj"));
             forn.setEmail(request.getParameter("txt_email"));
-            forn.setTelefone (request.getParameter("txt_tel"));
+            forn.setTelefone (request.getParameter("txt_telefone"));
             forn.setEndereço(request.getParameter("txt_endereco"));
             
             Dados.getFornecedor().add(forn);
