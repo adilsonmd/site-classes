@@ -1,5 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="br.com.fatecpg.ads.classes.Dados"%>
 <%@page import="br.com.fatecpg.ads.classes.Fornecedor"%>
 <!DOCTYPE html>
 <html>
@@ -13,17 +14,42 @@
         <script src="js/main.js"></script>
     </head>
 <body>
-    <% if (request.getParameter("incluir") != null){
-        Fornecedor f = new Fornecedor ();
-        f.setNome(request.getParameter("nmFornecedor"));
-        f.setRazaoSocial(request.getParameter("razaoSocialFornecedor"));
-        f.setCnpj (request.getParameter("cnpjFornecedor"));
-        f.setEmail(request.getParameter("emailFornecedor"));
-        f.setTelefone (request.getParameter("telFornecedor"));
-        f.setEndereço(request.getParameter("endFornecedor"));
-        Database.getFornecedores().add(f);
-        response.sendRedirect(request.getRequestURI());
-    }%>
+    <% 
+        Fornecedor forn = new Fornecedor ();
+        if (request.getParameter("in") != null){
+            //INCLUIR
+            forn.setNome(request.getParameter("txt_nome"));
+            forn.setRazaoSocial(request.getParameter("txt_social"));
+            forn.setCnpj (request.getParameter("txt_cnpj"));
+            forn.setEmail(request.getParameter("txt_email"));
+            forn.setTelefone (request.getParameter("txt_tel"));
+            forn.setEndereço(request.getParameter("txt_endereco"));
+            
+            Dados.getFornecedor().add(forn);
+            response.sendRedirect(request.getRequestURI());
+        }
+        if (request.getParameter("ex") != null) {
+            //EXCLUIR
+            Dados.getFornecedor().remove(Integer.parseInt(request.getParameter("id")));
+            
+            response.sendRedirect(request.getRequestURI());
+        }
+        
+        if (request.getParameter("ed") != null) {
+            //EDITAR
+            int idForn = Integer.parseInt(request.getParameter("id"));
+            Fornecedor novoForn = new Fornecedor();
+            novoForn.setNome(request.getParameter("txt_novo_nome"));
+            novoForn.setRazaoSocial(request.getParameter("txt_novo_social"));
+            novoForn.setCnpj(request.getParameter("txt_novo_cnpj"));
+            novoForn.setEmail(request.getParameter("txt_novo_email"));
+            novoForn.setTelefone(request.getParameter("txt_novo_tel"));
+            novoForn.setEndereço(request.getParameter("txt_novo_endereco"));
+            
+            Dados.getFornecedor().set(idForn, novoForn);
+            response.sendRedirect(request.getRequestURI());
+        }
+    %>
     <div class="container-fluid">
         <div class="row">
             <div id="sidebar-container" class="col-md-2 sidebar-container">
@@ -47,15 +73,11 @@
                                 <td><input class="form-control" type="text" name="txt_email" placeholder="Email"/></td>
                                 <td><input class="form-control" type="text" name="txt_telefone" placeholder="Telefone"/></td>
                                 <td><input class="form-control" type="text" name="txt_endereco" placeholder="Endereço"/></td>
-                                <td><button class="btn btn-default" type="submit">Cadastrar</button></td>
+                                <td><button class="btn btn-default" type="submit" name="in" value="1">Cadastrar</button></td>
                             </tr>
                         </table>
                     </form>
                 </div>
-                
-                <% 
-                    ArrayList<Fornecedor> forn = new ArrayList<Fornecedor >();
-                %>
                 <table class="table">
                     <tr>
                         <th>#ID</th> <!-- é o ID do ArrayList -->
@@ -68,17 +90,26 @@
                         <th colspan="2"></th>
                     </tr>
                     
-                    <% //for() { %> <!-- FAÇAM DO JEITO QUE CONHECEM -->
+                    <% for(Fornecedor fr: Dados.getFornecedor()) { %> <!-- FAÇAM DO JEITO QUE CONHECEM -->
                     <tr>
-                        <td>01</td>
-                        <td>Arthur</td>
-                        <td>Blanco</td>
-                        <td>Rua Will Smith</td>
-                        <td>1.420,60</td>
-                        <td><a href="?ed=1&id=<%= //arrayList id %>" class="btn btn-success">Editar</a></td>
-                        <td><a href="?ex=1&id=<%= //arraylist id%>" class="btn btn-danger">Excluir</a></td>
+                        <% int id = Dados.getFornecedor().indexOf(fr); %>
+                        <td><%= id %></td>
+                        <td><%= fr.getNome() %></td>
+                        <td><%= fr.getRazaoSocial() %></td>
+                        <td><%= fr.getCnpj() %></td>
+                        <td><%= fr.getEmail() %></td>
+                        <td><%= fr.getTelefone() %></td>
+                        <td><%= fr.getEndereço() %></td>
+                        <td>
+                            <input type="hidden" name="id" value="<%= id %>"/>
+                            <button type="submit" class="btn btn-success" name="ed" value="1">Editar</button>
+                        </td>
+                        <td>
+                            <input type="hidden" name="id" value="<%= id %>"/>
+                            <button type="submit" class="btn btn-danger" name="ex" value="1">Excluir</button>
+                        </td>
                     </tr>
-                    <% //} %>
+                    <% } %>
                 </table>
                 
             </div> <!-- DIV COL 9 -->
