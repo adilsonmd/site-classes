@@ -37,6 +37,16 @@
         if(request.getParameter("ed") != null) {
             //EDITAR
             //id=2 & ed=1
+            int idCliente = Integer.parseInt(request.getParameter("id"));
+            Cliente novoCliente = new Cliente();
+            novoCliente.setNome(request.getParameter("txt_novo_nome"));
+            novoCliente.setRg(request.getParameter("txt_novo_rg"));
+            novoCliente.setCpf(request.getParameter("txt_novo_cpf"));
+            novoCliente.setEmail(request.getParameter("txt_novo_email"));
+            novoCliente.setTelefone(request.getParameter("txt_novo_tel"));
+            novoCliente.setEndereço(request.getParameter("txt_novo_endereco"));
+            
+            Dados.getCliente().set(idCliente, novoCliente);
             response.sendRedirect(request.getRequestURI());
         }
     %>
@@ -53,7 +63,7 @@
             </div>
             <div class="col-md-9 full-content">
                 <div class="row">
-                    <form method="POST">
+                    <form method="POST" id="form-incluir">
                         <table class="table">
                             <tr>
                                 <td><div class="col-md-3"></div></td>
@@ -92,9 +102,9 @@
                         <td><%= cl.getTelefone() %></td>
                         <td><%= cl.getEndereço() %></td>
                         <td>
-                            <form>
+                            <form id="form-editar">
                                 <input type="hidden" name="id" value="<%= id %>"/>
-                                <button type="submit" class="btn btn-success" name="ed">Editar</button>
+                                <%@include file="modal_cliente.jsp" %>
                             </form>
                         </td>
                         <td>
@@ -104,7 +114,7 @@
                             </form>
                         </td>
                     </tr>
-                    <%  } %>
+                    <% } %>
                 </table>
             </div> <!-- DIV COL 9 -->
         </div> <!-- DIV ROW -->
