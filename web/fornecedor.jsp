@@ -1,11 +1,11 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="br.com.fatecpg.ads.classes.Funcionario"%>
+<%@page import="br.com.fatecpg.ads.classes.Fornecedor"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Funcionario - Cadastro</title>
+        <title>Fornecedor - Cadastro</title>
         <script src="js/jquery.min.js"></script>
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
         <link rel="stylesheet" href="css/main.css"/>
@@ -13,6 +13,17 @@
         <script src="js/main.js"></script>
     </head>
 <body>
+    <% if (request.getParameter("incluir") != null){
+        Fornecedor f = new Fornecedor ();
+        f.setNome(request.getParameter("nmFornecedor"));
+        f.setRazaoSocial(request.getParameter("razaoSocialFornecedor"));
+        f.setCnpj (request.getParameter("cnpjFornecedor"));
+        f.setEmail(request.getParameter("emailFornecedor"));
+        f.setTelefone (request.getParameter("telFornecedor"));
+        f.setEndereço(request.getParameter("endFornecedor"));
+        Database.getFornecedores().add(f);
+        response.sendRedirect(request.getRequestURI());
+    }%>
     <div class="container-fluid">
         <div class="row">
             <div id="sidebar-container" class="col-md-2 sidebar-container">
@@ -21,7 +32,7 @@
                 </ul>
                 <ul class="sidebar-list">
                     <li class="sidebar-item"><a href="cliente.jsp">Clientes</a></li>
-                    <li class="sidebar-item active"><a href="funcionario.jsp">Funcionários</a></li>
+                    <li class="sidebar-item active"><a href="fornecedor.jsp">Fornecedor</a></li>
                 </ul>
             </div>
             <div class="col-md-9 full-content">
@@ -43,7 +54,7 @@
                 </div>
                 
                 <% 
-                    ArrayList<Funcionario> func = new ArrayList<Funcionario >();
+                    ArrayList<Fornecedor> forn = new ArrayList<Fornecedor >();
                 %>
                 <table class="table">
                     <tr>

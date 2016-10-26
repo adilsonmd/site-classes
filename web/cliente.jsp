@@ -1,5 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="br.com.fatecpg.ads.classes.Dados"%>
 <%@page import="br.com.fatecpg.ads.classes.Cliente"%>
 <!DOCTYPE html>
 <html>
@@ -13,6 +14,32 @@
         <script src="js/main.js"></script>
     </head>
 <body>
+    <%
+        Cliente client = new Cliente();
+        
+        if(request.getParameter("in") != null) {
+            client.setNome(request.getParameter("txt_nome"));
+            client.setRg(request.getParameter("txt_rg"));
+            client.setCpf(request.getParameter("txt_cpf"));
+            client.setEmail(request.getParameter("txt_email"));
+            client.setTelefone(request.getParameter("txt_telefone"));
+            client.setEndereço(request.getParameter("txt_endereco"));
+            
+            Dados.getCliente().add(client);
+            response.sendRedirect(request.getRequestURI());
+        }
+        if(request.getParameter("ex") != null) {
+            //EXCLUIR
+            //id=2 & ex=1
+            Dados.getCliente().remove(Integer.parseInt(request.getParameter("id")));
+            response.sendRedirect(request.getRequestURI());
+        }
+        if(request.getParameter("ed") != null) {
+            //EDITAR
+            //id=2 & ed=1
+            response.sendRedirect(request.getRequestURI());
+        }
+    %>
     <div class="container-fluid">
         <div class="row">
             <div id="sidebar-container" class="col-md-2 sidebar-container">
@@ -21,12 +48,12 @@
                 </ul>
                 <ul class="sidebar-list">
                     <li class="sidebar-item active"><a href="cliente.jsp">Clientes</a></li>
-                    <li class="sidebar-item"><a href="funcionario.jsp">Funcionários</a></li>
+                    <li class="sidebar-item"><a href="fornecedor.jsp">Fornecedor</a></li>
                 </ul>
             </div>
             <div class="col-md-9 full-content">
                 <div class="row">
-                    <form>
+                    <form method="POST">
                         <table class="table">
                             <tr>
                                 <td><div class="col-md-3"></div></td>
@@ -36,15 +63,11 @@
                                 <td><input class="form-control" type="email" name="txt_email" placeholder="Email"/></td>
                                 <td><input class="form-control" type="text" name="txt_telefone" placeholder="Telefone"/></td>
                                 <td><input class="form-control" type="text" name="txt_endereco" placeholder="Endereço"/></td>
-                                <td><button class="btn btn-default" type="submit">Cadastrar</button></td>
+                                <td><button class="btn btn-default" type="submit" name="in" value="1">Cadastrar</button></td>
                             </tr>
                         </table>
                     </form>
                 </div>
-                
-                <% 
-                    ArrayList<Cliente> client = new ArrayList<Cliente>();
-                %>
                 
                 <table class="table table-dashed">
                     <tr>
@@ -58,19 +81,30 @@
                         <th colspan="2">Ações</th>
                     </tr>
                     
-                    <% //for () { %>
+                    <% for (Cliente cl: Dados.getCliente()){ %>
                     <tr>
-                        <td>01</td>
-                        <td>Adilson</td>
-                        <td>111.222.333-44</td>
-                        <td>11.222.333.4</td>
-                        <td>adilson@email.com</td>
-                        <td>1334484848</td>
-                        <td>Rua Fernandinho</td>
-                        <td><a href="?ed=1&id=<%= //arrayList id %>" class="btn btn-success">Editar</a></td>
-                        <td><a href="?ex=1&id=<%= //arraylist id%>" class="btn btn-danger">Excluir</a></td>
+                        <% int id = Dados.getCliente().indexOf(cl); %>
+                        <td><%= id %></td>
+                        <td><%= cl.getNome() %></td>
+                        <td><%= cl.getRg() %></td>
+                        <td><%= cl.getCpf() %></td>
+                        <td><%= cl.getEmail() %></td>
+                        <td><%= cl.getTelefone() %></td>
+                        <td><%= cl.getEndereço() %></td>
+                        <td>
+                            <form>
+                                <input type="hidden" name="id" value="<%= id %>"/>
+                                <button type="submit" class="btn btn-success" name="ed">Editar</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form>
+                                <input type="hidden" name="id" value="<%= id %>"/>
+                                <button type="submit" class="btn btn-danger" name="ex" value="1">Excluir</button>
+                            </form>
+                        </td>
                     </tr>
-                    <% // } %>
+                    <%  } %>
                 </table>
             </div> <!-- DIV COL 9 -->
         </div> <!-- DIV ROW -->
